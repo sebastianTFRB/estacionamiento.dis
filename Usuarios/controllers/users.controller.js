@@ -1,48 +1,136 @@
 /**
- * @author daferarte
+ * @author rick
  * @version 1.0.0
  * 
- * Controlador de usuario
- * Este archivo define los controladores de usuarios
+ * Controlador de vehículos
+ * Este archivo define los controladores de vehículos en el parqueadero
  */
 
-const {response, request} = require('express');
+const { response, request } = require('express');
 
-const ShowUsers = async(req=request, res=response)=>{
+// Base de datos ficticia para vehículos
+let vehiculos = [];
+
+// Muestra todos los vehículos
+const ShowVehicles = async (req = request, res = response) => {
+    // Aquí podrías recuperar los vehículos de la base de datos
     res.json({
-        "saludo":"soy la respuesta de mostrar usuarios"
+        "message": "Lista de todos los vehículos en el parqueadero",
+        "vehicles": vehiculos
     });
 };
 
-const AddUsers = async(req=request, res=response)=>{
+// Agrega un nuevo vehículo
+const AddVehicle = async (req = request, res = response) => {
+    const { placa, modelo, marca, color, tipo, atributo } = req.body; // Datos enviados en la solicitud
+
+    let nuevoVehiculo;
+
+    if (tipo === 'carro') {
+        nuevoVehiculo = {
+            placa,
+            modelo,
+            marca,
+            color,
+            numPuertas: atributo,  // El número de puertas para el carro
+            tipo: 'carro'
+        };
+    } else if (tipo === 'moto') {
+        nuevoVehiculo = {
+            placa,
+            modelo,
+            marca,
+            color,
+            cilindraje: atributo,  // El cilindraje para la moto
+            tipo: 'moto'
+        };
+    }
+
+    // Guardamos el nuevo vehículo en la lista
+    vehiculos.push(nuevoVehiculo);
+
     res.json({
-        "saludo":"soy la respuesta de agregar usuarios"
+        "message": "Vehículo agregado exitosamente",
+        "vehicle": nuevoVehiculo
     });
 };
 
-const ShowUser = async(req=request, res=response)=>{
+// Muestra un vehículo por placa
+const ShowVehicle = async (req = request, res = response) => {
+    const { placa } = req.params; // Placa del vehículo
+
+    // Buscar el vehículo por placa en la lista
+    const vehiculo = vehiculos.find(v => v.placa === placa);
+
+    if (!vehiculo) {
+        return res.status(404).json({
+            "message": `Vehículo con placa ${placa} no encontrado`
+        });
+    }
+
     res.json({
-        "saludo":"soy la respuesta de mostrar usuarios"
+        "message": `Detalles del vehículo con placa ${placa}`,
+        "vehicle": vehiculo
     });
 };
 
-const EditUsers = async(req=request, res=response)=>{
+// Edita un vehículo por placa
+const EditVehicle = async (req = request, res = response) => {
+    const { placa } = req.params;
+    const { modelo, marca, color, atributo } = req.body; // Nuevos datos del vehículo
+
+    // Encontramos el vehículo a editar
+    let vehiculo = vehiculos.find(v => v.placa === placa);
+
+    if (!vehiculo) {
+        return res.status(404).json({
+            "message": `Vehículo con placa ${placa} no encontrado`
+        });
+    }
+
+    // Actualizamos los datos del vehículo
+    vehiculo.modelo = modelo || vehiculo.modelo;
+    vehiculo.marca = marca || vehiculo.marca;
+    vehiculo.color = color || vehiculo.color;
+
+    // Dependiendo si es carro o moto, actualizamos su atributo específico
+    if (vehiculo.tipo === 'carro') {
+        vehiculo.numPuertas = atributo || vehiculo.numPuertas;
+    } else if (vehiculo.tipo === 'moto') {
+        vehiculo.cilindraje = atributo || vehiculo.cilindraje;
+    }
+
     res.json({
-        "saludo":"soy la respuesta de mostrar usuarios"
+        "message": `Vehículo con placa ${placa} actualizado exitosamente`,
+        "updatedVehicle": vehiculo
     });
 };
 
-const DeleteUsers = async(req=request, res=response)=>{
+// Elimina un vehículo por placa
+const DeleteVehicle = async (req = request, res = response) => {
+    const { placa } = req.params;
+
+    // Filtramos la lista de vehículos eliminando el vehículo con la placa dada
+    const vehiculosFiltrados = vehiculos.filter(v => v.placa !== placa);
+
+    if (vehiculosFiltrados.length === vehiculos.length) {
+        return res.status(404).json({
+            "message": `Vehículo con placa ${placa} no encontrado`
+        });
+    }
+
+    // Actualizamos la lista
+    vehiculos = vehiculosFiltrados;
+
     res.json({
-        "saludo":"soy la respuesta de mostrar usuarios"
+        "message": `Vehículo con placa ${placa} eliminado exitosamente`
     });
 };
-
 
 module.exports = {
-    AddUsers,
-    ShowUsers,
-    ShowUser,
-    EditUsers,
-    DeleteUsers
+    AddVehicle,
+    ShowVehicles,
+    ShowVehicle,
+    EditVehicle,
+    DeleteVehicle
 };

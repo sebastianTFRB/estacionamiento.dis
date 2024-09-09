@@ -1,5 +1,5 @@
 /**
- * @author daferarte
+ * @author rick
  * @version 1.0.0
  * 
  * Servidor de express

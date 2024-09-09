@@ -1,12 +1,12 @@
 {
   "name": "servidor",
   "version": "1.0.0",
-  "description": "proyecto de prueba",
+  "description": "estacionameinto prueba",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "daferarte",
+  "author": "rick",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2"
