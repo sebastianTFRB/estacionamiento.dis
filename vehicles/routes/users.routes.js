@@ -14,7 +14,7 @@ const router= Router();
  * Importando los metodos
  */
 
-const {AddUsers, ShowUsers, DeleteUsers, EditUsers, ShowUser} = require('../controllers/users.controller');
+const {AddUsers, ShowUsers, DeleteUsers, EditUsers, ShowUser} = require('../controllers/vehicles.controller');
 
 /**
  * Rutas
