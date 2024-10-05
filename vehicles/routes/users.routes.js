@@ -1,28 +1,13 @@
-/**
- * @author daferarte
- * @version 1.0.0
- * 
- * Rutas de usuario
- * Este archivo define las rutas de usuarios
- */
+const { Router } = require('express');
+const { ShowVehicles, AddVehicle, ShowVehicle, EditVehicle, DeleteVehicle } = require('../controllers/vehicles.controller');
 
-const {Router} = require('express');
+const router = Router();
 
-const router= Router();
-
-/**
- * Importando los metodos
- */
-
-const {AddUsers, ShowUsers, DeleteUsers, EditUsers, ShowUser} = require('../controllers/vehicles.controller');
-
-/**
- * Rutas
- */
-router.get('/', ShowUsers);
-router.post('/', AddUsers);
-router.delete('/', DeleteUsers);
-router.put('/', EditUsers);
-router.get('/:id', ShowUser);
+// Rutas para vehículos
+router.get('/', ShowVehicles);       // Mostrar todos los vehículos
+router.post('/', AddVehicle);        // Agregar un nuevo vehículo
+router.get('/:placa', ShowVehicle);  // Mostrar un vehículo por su placa
+router.put('/:placa', EditVehicle);  // Editar un vehículo por su placa
+router.delete('/:placa', DeleteVehicle); // Eliminar un vehículo por su placa
 
 module.exports = router;
