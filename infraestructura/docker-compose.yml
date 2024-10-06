@@ -1,0 +1,9 @@
+services:
+  
+  users_api:
+    build:
+      context: ./APIS
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./APIS/vehicles:/usr/vehiclesAPI
