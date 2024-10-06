@@ -1,21 +1,11 @@
-/**
- * @author rick
- * @version 1.0.0
- * 
- * Controlador de vehículos
- * Este archivo define los controladores de vehículos en el parqueadero
- */
-
 const { request, response } = require('express');
-const { Vehiculo, Carro, Moto } = require('../models/vehiculo.model');
-const Parqueadero = require('../models/parqueadero.model');
+const { PrismaClient } = require('@prisma/client');
 
-// Instancia del parqueadero (definimos que tiene 10 puestos disponibles)
-const parqueadero = new Parqueadero(10);
+const prisma = new PrismaClient();
 
 // Muestra todos los vehículos en el parqueadero
 const ShowVehicles = async (req = request, res = response) => {
-    const listaVehiculos = parqueadero.verListaVehiculos();
+    const listaVehiculos = await prisma.vehiculo.findMany();
     res.json({
         "message": "Lista de todos los vehículos en el parqueadero",
         "vehicles": listaVehiculos
@@ -26,39 +16,55 @@ const ShowVehicles = async (req = request, res = response) => {
 const AddVehicle = async (req = request, res = response) => {
     const { placa, modelo, marca, color, tipo, atributo } = req.body;
 
-    let nuevoVehiculo;
+    try {
+        const nuevoVehiculo = await prisma.vehiculo.create({
+            data: {
+                placa,
+                modelo,
+                marca,
+                color,
+                tipo,
+                atributo,
+            },
+        });
 
-    if (tipo === 'carro') {
-        nuevoVehiculo = new Carro(placa, modelo, marca, color, new Date(), null, atributo);
-    } else if (tipo === 'moto') {
-        nuevoVehiculo = new Moto(placa, modelo, marca, color, new Date(), null, atributo);
+        res.json({
+            "message": "Vehículo agregado exitosamente",
+            "vehicle": nuevoVehiculo
+        });
+    } catch (error) {
+        res.status(500).json({
+            "message": "Error al agregar el vehículo",
+            "error": error.message
+        });
     }
-
-    parqueadero.agregarVehiculo(nuevoVehiculo);
-
-    res.json({
-        "message": "Vehículo agregado exitosamente",
-        "vehicle": nuevoVehiculo
-    });
 };
 
 // Muestra un vehículo por su placa
 const ShowVehicle = async (req = request, res = response) => {
-    const { placa } = req.params; // Placa del vehículo
+    const { placa } = req.params;
 
-    // Buscar el vehículo por su placa en el parqueadero
-    const vehiculo = parqueadero.verListaVehiculos().find(v => v.placa === placa);
+    try {
+        const vehiculo = await prisma.vehiculo.findUnique({
+            where: { placa },
+        });
 
-    if (!vehiculo) {
-        return res.status(404).json({
-            "message": `Vehículo con placa ${placa} no encontrado`
+        if (!vehiculo) {
+            return res.status(404).json({
+                "message": `Vehículo con placa ${placa} no encontrado`
+            });
+        }
+
+        res.json({
+            "message": `Detalles del vehículo con placa ${placa}`,
+            "vehicle": vehiculo
+        });
+    } catch (error) {
+        res.status(500).json({
+            "message": "Error al buscar el vehículo",
+            "error": error.message
         });
     }
-
-    res.json({
-        "message": `Detalles del vehículo con placa ${placa}`,
-        "vehicle": vehiculo
-    });
 };
 
 // Edita un vehículo por su placa
@@ -66,50 +72,57 @@ const EditVehicle = async (req = request, res = response) => {
     const { placa } = req.params;
     const { modelo, marca, color, atributo } = req.body; // Nuevos datos del vehículo
 
-    // Buscar el vehículo a editar en la lista
-    let vehiculo = parqueadero.verListaVehiculos().find(v => v.placa === placa);
+    try {
+        const vehiculo = await prisma.vehiculo.update({
+            where: { placa },
+            data: {
+                modelo: modelo || undefined,
+                marca: marca || undefined,
+                color: color || undefined,
+                atributo: atributo || undefined,
+            },
+        });
 
-    if (!vehiculo) {
-        return res.status(404).json({
-            "message": `Vehículo con placa ${placa} no encontrado`
+        res.json({
+            "message": `Vehículo con placa ${placa} actualizado exitosamente`,
+            "updatedVehicle": vehiculo
+        });
+    } catch (error) {
+        if (error.code === 'P2025') {
+            return res.status(404).json({
+                "message": `Vehículo con placa ${placa} no encontrado`
+            });
+        }
+        res.status(500).json({
+            "message": "Error al actualizar el vehículo",
+            "error": error.message
         });
     }
-
-    // Actualizar los datos del vehículo
-    vehiculo.modelo = modelo || vehiculo.modelo;
-    vehiculo.marca = marca || vehiculo.marca;
-    vehiculo.color = color || vehiculo.color;
-
-    if (vehiculo instanceof Carro) {
-        vehiculo.numPuertas = atributo || vehiculo.numPuertas;
-    } else if (vehiculo instanceof Moto) {
-        vehiculo.cilindraje = atributo || vehiculo.cilindraje;
-    }
-
-    res.json({
-        "message": `Vehículo con placa ${placa} actualizado exitosamente`,
-        "updatedVehicle": vehiculo
-    });
 };
 
 // Elimina un vehículo por su placa
 const DeleteVehicle = async (req = request, res = response) => {
     const { placa } = req.params;
 
-    // Filtrar la lista de vehículos para eliminar el que tiene la placa indicada
-    const vehiculosFiltrados = parqueadero.verListaVehiculos().filter(v => v.placa !== placa);
+    try {
+        await prisma.vehiculo.delete({
+            where: { placa },
+        });
 
-    if (vehiculosFiltrados.length === parqueadero.verListaVehiculos().length) {
-        return res.status(404).json({
-            "message": `Vehículo con placa ${placa} no encontrado`
+        res.json({
+            "message": `Vehículo con placa ${placa} eliminado exitosamente`
+        });
+    } catch (error) {
+        if (error.code === 'P2025') {
+            return res.status(404).json({
+                "message": `Vehículo con placa ${placa} no encontrado`
+            });
+        }
+        res.status(500).json({
+            "message": "Error al eliminar el vehículo",
+            "error": error.message
         });
     }
-
-    parqueadero.listaVehiculos = vehiculosFiltrados;
-
-    res.json({
-        "message": `Vehículo con placa ${placa} eliminado exitosamente`
-    });
 };
 
 module.exports = {

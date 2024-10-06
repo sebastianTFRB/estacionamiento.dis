@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Vehiculo {
+  id        Int     @id @default(autoincrement())
+  placa     String  @unique
+  modelo    String
+  marca     String
+  color     String
+  tipo      String  // "carro" o "moto"
+  atributo  String? // Atributo específico
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relaciones
+  carro     Carro?  @relation("CarroVehiculo") // Relación opcional
+  moto      Moto?   @relation("MotoVehiculo")  // Relación opcional
+}
+
+model Carro {
+  id          Int      @id @default(autoincrement())
+  vehiculoID  Int     @unique // Campo único
+  vehiculo    Vehiculo @relation("CarroVehiculo", fields: [vehiculoID], references: [id])
+  numPuertas  Int?     // Atributo específico para carro
+}
+
+model Moto {
+  id          Int      @id @default(autoincrement())
+  vehiculoID  Int     @unique // Campo único
+  vehiculo    Vehiculo @relation("MotoVehiculo", fields: [vehiculoID], references: [id])
+  cilindraje  Int?     // Atributo específico para moto
+}
