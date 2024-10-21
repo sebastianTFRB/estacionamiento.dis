@@ -1,5 +1,4 @@
 services:
-  
   users_api:
     build:
       context: ./APIS
@@ -7,3 +6,33 @@ services:
       - "3000:3000"
     volumes:
       - ./APIS/vehicles:/usr/vehiclesAPI
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: "postgresql://root:root@postgres:5432/vehiculos_db?schema=public"
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_DB: vehiculos_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
