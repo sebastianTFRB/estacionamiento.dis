@@ -1,4 +1,4 @@
-// This is your Prisma schema file
+// Este es tu archivo Prisma schema
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL") // Usamos una variable de entorno
@@ -20,9 +20,12 @@ model Vehiculo {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // Relaciones
+  // Relación con Carro y Moto
   carro     Carro?  @relation("CarroVehiculo") // Relación opcional
   moto      Moto?   @relation("MotoVehiculo")  // Relación opcional
+
+  // Relación con Ficha (campo inverso)
+  ficha     Ficha?  @relation("VehiculoFicha") // Relación inversa
 }
 
 model Carro {
@@ -37,4 +40,13 @@ model Moto {
   vehiculoID  Int     @unique // Campo único
   vehiculo    Vehiculo @relation("MotoVehiculo", fields: [vehiculoID], references: [id])
   cilindraje  Int?     // Atributo específico para moto
+}
+
+model Ficha {
+  id           Int      @id @default(autoincrement())
+  estadoPago   Boolean  // Estado del pago: true = pagado, false = no pagado
+  fechaEntrada DateTime @default(now()) // Fecha de entrada
+  fechaSalida  DateTime? // Fecha de salida (puede ser nula hasta que el vehículo salga)
+  vehiculoId   Int      @unique  // Relación con Vehiculo
+  vehiculo     Vehiculo @relation(fields: [vehiculoId], references: [id], name: "VehiculoFicha") // Relación con Vehiculo
 }

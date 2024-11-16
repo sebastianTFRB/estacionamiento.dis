@@ -1,0 +1,17 @@
+# Usar la imagen oficial de PostgreSQL como base
+FROM postgres:17
+
+# Instalar la extensión pgaudit
+RUN apt-get update && \
+    apt-get install -y postgresql-contrib && \
+    apt-get install -y postgresql-17-pgaudit && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copiar el archivo de configuración personalizado (asegúrate de que la ruta sea correcta)
+COPY postgresql_configs/postgresql.conf /etc/postgresql/postgresql.conf
+
+
+
+# Comando para iniciar PostgreSQL con la configuración personalizada
+CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]

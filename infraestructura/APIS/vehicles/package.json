@@ -1,8 +1,20 @@
 {
   "dependencies": {
-    "@prisma/client": "^5.20.0",
-    "cors": "^2.8.5",
-    "express": "^4.21.0",
-    "prisma": "^5.20.0"
+    "@prisma/client": "^5.22.0",
+    "express": "^4.21.1",
+    "vehicles": "file:"
+  },
+  "name": "vehicles",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "prisma": "^5.22.0"
   }
 }

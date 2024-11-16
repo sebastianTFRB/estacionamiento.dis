@@ -1,20 +1,18 @@
-// Clase Ficha
 class Ficha {
-    constructor(idFicha, estadoPago, fechaEntrada, fechaSalida) {
+    constructor(idFicha, fechaEntrada, fechaSalida = null) {
         this.idFicha = idFicha;
-        this.estadoPago = estadoPago;  // Booleano que indica si el pago ha sido realizado o no
         this.fechaEntrada = fechaEntrada;
-        this.fechaSalida = fechaSalida || null; // Fecha de salida puede estar vacía hasta que se realice la salida
+        this.fechaSalida = fechaSalida || null; // La fecha de salida se asigna cuando el vehículo se va
     }
 
-    // Método para registrar la fecha de salida
+    // Método para registrar la fecha de salida y asumir que el pago se realizó
     registrarSalida() {
-        this.fechaSalida = new Date(); // Actualiza la fecha de salida a la fecha actual
+        this.fechaSalida = new Date(); // Actualiza la fecha de salida
     }
 
-    // Método para marcar el estado de pago
-    cambiarEstadoPago(estado) {
-        this.estadoPago = estado;
+    // Verifica si el vehículo ha pagado, lo que asumimos por la existencia de una fecha de salida
+    estaPagado() {
+        return this.fechaSalida !== null;
     }
 }
 

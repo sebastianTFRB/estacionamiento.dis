@@ -1,0 +1,32 @@
+2024-11-16 19:57:39.104 GMT [49] LOG:  starting PostgreSQL 17.1 (Debian 17.1-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2024-11-16 19:57:39.105 GMT [49] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-11-16 19:57:39.109 GMT [53] LOG:  database system was shut down at 2024-11-16 19:57:38 GMT
+2024-11-16 19:57:39.114 GMT [49] LOG:  database system is ready to accept connections
+2024-11-16 19:57:39.292 GMT [59] LOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'vehiculos_db' ;
+2024-11-16 19:57:39.293 GMT [59] LOG:  AUDIT: SESSION,1,1,READ,SELECT,,,SELECT 1 FROM pg_database WHERE datname = 'vehiculos_db',<not logged>
+2024-11-16 19:57:39.293 GMT [59] LOG:  duration: 0.995 ms
+2024-11-16 19:57:39.492 GMT [61] LOG:  statement: CREATE DATABASE "vehiculos_db" ;
+2024-11-16 19:57:39.599 GMT [61] LOG:  AUDIT: SESSION,1,1,DDL,CREATE DATABASE,,,"CREATE DATABASE ""vehiculos_db""",<not logged>
+2024-11-16 19:57:39.602 GMT [61] LOG:  duration: 109.235 ms
+2024-11-16 19:57:39.604 GMT [49] LOG:  received fast shutdown request
+2024-11-16 19:57:39.605 GMT [49] LOG:  aborting any active transactions
+2024-11-16 19:57:39.607 GMT [49] LOG:  background worker "logical replication launcher" (PID 56) exited with exit code 1
+2024-11-16 19:57:39.608 GMT [51] LOG:  shutting down
+2024-11-16 19:57:39.609 GMT [51] LOG:  checkpoint starting: shutdown immediate
+2024-11-16 19:57:39.733 GMT [51] LOG:  checkpoint complete: wrote 921 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.094 s, sync=0.028 s, total=0.126 s; sync files=301, longest=0.002 s, average=0.001 s; distance=4238 kB, estimate=4238 kB; lsn=0/1908978, redo lsn=0/1908978
+2024-11-16 19:57:39.738 GMT [49] LOG:  database system is shut down
+2024-11-16 19:57:39.896 GMT [1] LOG:  starting PostgreSQL 17.1 (Debian 17.1-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2024-11-16 19:57:39.896 GMT [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2024-11-16 19:57:39.896 GMT [1] LOG:  listening on IPv6 address "::", port 5432
+2024-11-16 19:57:39.899 GMT [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-11-16 19:57:39.903 GMT [67] LOG:  database system was shut down at 2024-11-16 19:57:39 GMT
+2024-11-16 19:57:39.908 GMT [1] LOG:  database system is ready to accept connections
+2024-11-16 20:02:39.986 GMT [65] LOG:  checkpoint starting: time
+2024-11-16 20:02:41.612 GMT [65] LOG:  checkpoint complete: wrote 19 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.614 s, sync=0.004 s, total=1.627 s; sync files=11, longest=0.003 s, average=0.001 s; distance=28 kB, estimate=28 kB; lsn=0/190FA28, redo lsn=0/190F9D0
+2024-11-16 20:03:42.335 GMT [1] LOG:  received fast shutdown request
+2024-11-16 20:03:42.337 GMT [1] LOG:  aborting any active transactions
+2024-11-16 20:03:42.340 GMT [1] LOG:  background worker "logical replication launcher" (PID 70) exited with exit code 1
+2024-11-16 20:03:42.347 GMT [65] LOG:  shutting down
+2024-11-16 20:03:42.349 GMT [65] LOG:  checkpoint starting: shutdown immediate
+2024-11-16 20:03:42.379 GMT [65] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.033 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=25 kB; lsn=0/190FAD8, redo lsn=0/190FAD8
+2024-11-16 20:03:42.385 GMT [1] LOG:  database system is shut down
