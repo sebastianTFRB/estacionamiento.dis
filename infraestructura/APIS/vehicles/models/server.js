@@ -1,14 +1,11 @@
-/**
- * Importando variables
- */
-
 const express = require('express');
+const cors = require('cors');  // Importamos CORS
 
 /**
  * @class Server
  * clase servidor que inicia el servicio de express
  */
-class Server {
+class Server {  
     constructor() {
         this.app = express();
         this.port = 3000;
@@ -18,6 +15,7 @@ class Server {
     }
 
     middlewares() {
+        this.app.use(cors());  // Habilitamos CORS para todas las solicitudes
         this.app.use(express.json()); // Middleware para parsear el cuerpo de las solicitudes JSON
     }
 

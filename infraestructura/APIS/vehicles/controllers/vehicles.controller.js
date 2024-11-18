@@ -145,27 +145,32 @@ const DeleteVehicle = async (req = request, res = response) => {
 
         if (!vehiculo) {
             return res.status(404).json({
-                "message": "Vehículo no encontrado"
+                message: "Vehículo no encontrado",
             });
         }
 
-        // Eliminar el vehículo de la lista del parqueadero
-        parqueadero.eliminarVehiculo(placa);
+        // Eliminar registros relacionados en la tabla Ficha
+        await prisma.ficha.deleteMany({
+            where: { vehiculoId: vehiculo.id },
+        });
 
+        // Eliminar el vehículo
         await prisma.vehiculo.delete({
             where: { placa },
         });
 
         res.json({
-            "message": `Vehículo con placa ${placa} eliminado del parqueadero.`
+            message: `Vehículo con placa ${placa} eliminado exitosamente.`,
         });
     } catch (error) {
         res.status(500).json({
-            "message": "Error al eliminar el vehículo.",
-            "error": error.message
+            message: "Error al eliminar el vehículo.",
+            error: error.message,
         });
     }
 };
+
+
 
 // Actualizar la ficha de un vehículo
 const UpdateFicha = async (req = request, res = response) => {
