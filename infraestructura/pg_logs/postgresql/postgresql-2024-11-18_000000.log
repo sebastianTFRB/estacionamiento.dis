@@ -1,0 +1,6 @@
+2024-11-18 01:44:29.472 GMT [1] LOG:  aborting any active transactions
+2024-11-18 01:44:29.483 GMT [1] LOG:  background worker "logical replication launcher" (PID 33) exited with exit code 1
+2024-11-18 01:44:29.484 GMT [28] LOG:  shutting down
+2024-11-18 01:44:29.489 GMT [28] LOG:  checkpoint starting: shutdown immediate
+2024-11-18 01:44:29.519 GMT [28] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.012 s, sync=0.001 s, total=0.035 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=4 kB; lsn=0/5DA4158, redo lsn=0/5DA4158
+2024-11-18 01:44:29.529 GMT [1] LOG:  database system is shut down

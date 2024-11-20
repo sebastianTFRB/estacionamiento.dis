@@ -1,0 +1,19 @@
+2024-11-17 20:34:07.792 GMT [1] LOG:  starting PostgreSQL 17.1 (Debian 17.1-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2024-11-17 20:34:07.878 GMT [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2024-11-17 20:34:07.879 GMT [1] LOG:  listening on IPv6 address "::", port 5432
+2024-11-17 20:34:07.881 GMT [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-11-17 20:34:07.886 GMT [30] LOG:  database system was interrupted; last known up at 2024-11-17 20:28:50 GMT
+2024-11-17 20:34:08.015 GMT [30] LOG:  database system was not properly shut down; automatic recovery in progress
+2024-11-17 20:34:08.017 GMT [30] LOG:  redo starts at 0/5D9FF30
+2024-11-17 20:34:08.017 GMT [30] LOG:  invalid record length at 0/5D9FF68: expected at least 24, got 0
+2024-11-17 20:34:08.017 GMT [30] LOG:  redo done at 0/5D9FF30 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2024-11-17 20:34:08.022 GMT [28] LOG:  checkpoint starting: end-of-recovery immediate wait
+2024-11-17 20:34:08.028 GMT [28] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.008 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/5D9FF68, redo lsn=0/5D9FF68
+2024-11-17 20:34:08.037 GMT [1] LOG:  database system is ready to accept connections
+2024-11-17 20:35:47.360 GMT [1] LOG:  received fast shutdown request
+2024-11-17 20:35:47.363 GMT [1] LOG:  aborting any active transactions
+2024-11-17 20:35:47.367 GMT [1] LOG:  background worker "logical replication launcher" (PID 33) exited with exit code 1
+2024-11-17 20:35:47.367 GMT [28] LOG:  shutting down
+2024-11-17 20:35:47.370 GMT [28] LOG:  checkpoint starting: shutdown immediate
+2024-11-17 20:35:47.375 GMT [28] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.009 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=0 kB; lsn=0/5DA0030, redo lsn=0/5DA0030
+2024-11-17 20:35:47.380 GMT [1] LOG:  database system is shut down

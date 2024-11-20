@@ -1,0 +1,20 @@
+2024-11-17 21:34:46.113 GMT [1] LOG:  starting PostgreSQL 17.1 (Debian 17.1-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2024-11-17 21:34:46.113 GMT [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2024-11-17 21:34:46.113 GMT [1] LOG:  listening on IPv6 address "::", port 5432
+2024-11-17 21:34:46.117 GMT [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-11-17 21:34:46.124 GMT [30] LOG:  database system was shut down at 2024-11-17 21:33:55 GMT
+2024-11-17 21:34:46.130 GMT [1] LOG:  database system is ready to accept connections
+2024-11-17 21:35:03.928 GMT [34] LOG:  duration: 9.559 ms  parse s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) LIMIT $2 OFFSET $3
+2024-11-17 21:35:03.936 GMT [34] LOG:  AUDIT: SESSION,1,1,READ,SELECT,,,"SELECT ""public"".""Vehiculo"".""id"", ""public"".""Vehiculo"".""placa"", ""public"".""Vehiculo"".""modelo"", ""public"".""Vehiculo"".""marca"", ""public"".""Vehiculo"".""color"", ""public"".""Vehiculo"".""tipo"", ""public"".""Vehiculo"".""atributo"", ""public"".""Vehiculo"".""createdAt"", ""public"".""Vehiculo"".""updatedAt"" FROM ""public"".""Vehiculo"" WHERE (""public"".""Vehiculo"".""placa"" = $1 AND 1=1) LIMIT $2 OFFSET $3",<not logged>
+2024-11-17 21:35:03.937 GMT [34] LOG:  duration: 8.902 ms  bind s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) LIMIT $2 OFFSET $3
+2024-11-17 21:35:03.937 GMT [34] DETAIL:  Parameters: $1 = 'Wacala', $2 = '1', $3 = '0'
+2024-11-17 21:35:03.937 GMT [34] LOG:  execute s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) LIMIT $2 OFFSET $3
+2024-11-17 21:35:03.937 GMT [34] DETAIL:  Parameters: $1 = 'Wacala', $2 = '1', $3 = '0'
+2024-11-17 21:35:03.937 GMT [34] LOG:  duration: 0.326 ms
+2024-11-17 21:36:19.346 GMT [1] LOG:  received fast shutdown request
+2024-11-17 21:36:19.347 GMT [1] LOG:  aborting any active transactions
+2024-11-17 21:36:19.349 GMT [1] LOG:  background worker "logical replication launcher" (PID 33) exited with exit code 1
+2024-11-17 21:36:19.349 GMT [28] LOG:  shutting down
+2024-11-17 21:36:19.350 GMT [28] LOG:  checkpoint starting: shutdown immediate
+2024-11-17 21:36:19.358 GMT [28] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.009 s; sync files=3, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/5DA1308, redo lsn=0/5DA1308
+2024-11-17 21:36:19.361 GMT [1] LOG:  database system is shut down

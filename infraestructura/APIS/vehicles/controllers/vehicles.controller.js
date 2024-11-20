@@ -3,10 +3,20 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-// Mostrar todos los vehículos en el parqueadero
 const ShowVehicles = async (req = request, res = response) => {
     try {
-        const listaVehiculos = await prisma.vehiculo.findMany();
+        // Obtenemos la lista de vehículos, incluyendo los detalles de la ficha
+        const listaVehiculos = await prisma.vehiculo.findMany({
+            include: {
+                ficha: {
+                    select: {
+                        estadoPago: true, // Incluye el estado de pago de la ficha
+                        fechaSalida: true // Incluye la fecha de salida de la ficha
+                    }
+                }
+            }
+        });
+
         res.json({
             "message": "Lista de vehículos",
             "vehicles": listaVehiculos
@@ -18,6 +28,7 @@ const ShowVehicles = async (req = request, res = response) => {
         });
     }
 };
+
 
 // Mostrar un vehículo por su placa con su ficha asociada
 const ShowVehicle = async (req, res) => {

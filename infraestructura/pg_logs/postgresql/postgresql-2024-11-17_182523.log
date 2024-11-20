@@ -1,0 +1,38 @@
+2024-11-17 18:25:23.242 GMT [1] LOG:  starting PostgreSQL 17.1 (Debian 17.1-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2024-11-17 18:25:23.243 GMT [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2024-11-17 18:25:23.243 GMT [1] LOG:  listening on IPv6 address "::", port 5432
+2024-11-17 18:25:23.259 GMT [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-11-17 18:25:23.279 GMT [30] LOG:  database system was shut down at 2024-11-16 21:23:39 GMT
+2024-11-17 18:25:23.323 GMT [1] LOG:  database system is ready to accept connections
+2024-11-17 18:30:23.355 GMT [28] LOG:  checkpoint starting: time
+2024-11-17 18:30:23.365 GMT [28] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.010 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/5D9F888, redo lsn=0/5D9F830
+2024-11-17 18:54:07.281 GMT [65] LOG:  duration: 32.757 ms  parse s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE 1=1 OFFSET $1
+2024-11-17 18:54:07.294 GMT [65] LOG:  AUDIT: SESSION,1,1,READ,SELECT,,,"SELECT ""public"".""Vehiculo"".""id"", ""public"".""Vehiculo"".""placa"", ""public"".""Vehiculo"".""modelo"", ""public"".""Vehiculo"".""marca"", ""public"".""Vehiculo"".""color"", ""public"".""Vehiculo"".""tipo"", ""public"".""Vehiculo"".""atributo"", ""public"".""Vehiculo"".""createdAt"", ""public"".""Vehiculo"".""updatedAt"" FROM ""public"".""Vehiculo"" WHERE 1=1 OFFSET $1",<not logged>
+2024-11-17 18:54:07.296 GMT [65] LOG:  duration: 14.380 ms  bind s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE 1=1 OFFSET $1
+2024-11-17 18:54:07.296 GMT [65] DETAIL:  Parameters: $1 = '0'
+2024-11-17 18:54:07.296 GMT [65] LOG:  execute s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE 1=1 OFFSET $1
+2024-11-17 18:54:07.296 GMT [65] DETAIL:  Parameters: $1 = '0'
+2024-11-17 18:54:07.298 GMT [65] LOG:  duration: 1.400 ms
+2024-11-17 18:54:23.486 GMT [65] LOG:  statement: SELECT 1
+2024-11-17 18:54:23.487 GMT [65] LOG:  AUDIT: SESSION,2,1,READ,SELECT,,,SELECT 1,<not logged>
+2024-11-17 18:54:23.487 GMT [65] LOG:  duration: 0.295 ms
+2024-11-17 18:54:23.488 GMT [65] LOG:  AUDIT: SESSION,3,1,READ,SELECT,,,"SELECT ""public"".""Vehiculo"".""id"", ""public"".""Vehiculo"".""placa"", ""public"".""Vehiculo"".""modelo"", ""public"".""Vehiculo"".""marca"", ""public"".""Vehiculo"".""color"", ""public"".""Vehiculo"".""tipo"", ""public"".""Vehiculo"".""atributo"", ""public"".""Vehiculo"".""createdAt"", ""public"".""Vehiculo"".""updatedAt"" FROM ""public"".""Vehiculo"" WHERE 1=1 OFFSET $1",<not logged>
+2024-11-17 18:54:23.488 GMT [65] LOG:  duration: 0.373 ms  bind s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE 1=1 OFFSET $1
+2024-11-17 18:54:23.488 GMT [65] DETAIL:  Parameters: $1 = '0'
+2024-11-17 18:54:23.488 GMT [65] LOG:  execute s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE 1=1 OFFSET $1
+2024-11-17 18:54:23.488 GMT [65] DETAIL:  Parameters: $1 = '0'
+2024-11-17 18:54:23.488 GMT [65] LOG:  duration: 0.054 ms
+2024-11-17 19:02:37.325 GMT [83] LOG:  duration: 0.660 ms  parse s1: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE 1=1 OFFSET $1
+2024-11-17 19:02:37.326 GMT [83] LOG:  AUDIT: SESSION,1,1,READ,SELECT,,,"SELECT ""public"".""Vehiculo"".""id"", ""public"".""Vehiculo"".""placa"", ""public"".""Vehiculo"".""modelo"", ""public"".""Vehiculo"".""marca"", ""public"".""Vehiculo"".""color"", ""public"".""Vehiculo"".""tipo"", ""public"".""Vehiculo"".""atributo"", ""public"".""Vehiculo"".""createdAt"", ""public"".""Vehiculo"".""updatedAt"" FROM ""public"".""Vehiculo"" WHERE 1=1 OFFSET $1",<not logged>
+2024-11-17 19:02:37.326 GMT [83] LOG:  duration: 0.534 ms  bind s1: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE 1=1 OFFSET $1
+2024-11-17 19:02:37.326 GMT [83] DETAIL:  Parameters: $1 = '0'
+2024-11-17 19:02:37.326 GMT [83] LOG:  execute s1: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE 1=1 OFFSET $1
+2024-11-17 19:02:37.326 GMT [83] DETAIL:  Parameters: $1 = '0'
+2024-11-17 19:02:37.326 GMT [83] LOG:  duration: 0.065 ms
+2024-11-17 19:02:52.867 GMT [1] LOG:  received fast shutdown request
+2024-11-17 19:02:52.869 GMT [1] LOG:  aborting any active transactions
+2024-11-17 19:02:52.872 GMT [1] LOG:  background worker "logical replication launcher" (PID 33) exited with exit code 1
+2024-11-17 19:02:52.875 GMT [28] LOG:  shutting down
+2024-11-17 19:02:52.877 GMT [28] LOG:  checkpoint starting: shutdown immediate
+2024-11-17 19:02:52.890 GMT [28] LOG:  checkpoint complete: wrote 1 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.003 s, total=0.015 s; sync files=1, longest=0.003 s, average=0.003 s; distance=0 kB, estimate=0 kB; lsn=0/5D9F938, redo lsn=0/5D9F938
+2024-11-17 19:02:52.900 GMT [1] LOG:  database system is shut down

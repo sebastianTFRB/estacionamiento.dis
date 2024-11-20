@@ -1,0 +1,32 @@
+2024-11-17 21:36:50.041 GMT [1] LOG:  starting PostgreSQL 17.1 (Debian 17.1-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2024-11-17 21:36:50.041 GMT [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2024-11-17 21:36:50.041 GMT [1] LOG:  listening on IPv6 address "::", port 5432
+2024-11-17 21:36:50.044 GMT [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-11-17 21:36:50.051 GMT [30] LOG:  database system was shut down at 2024-11-17 21:36:19 GMT
+2024-11-17 21:36:50.058 GMT [1] LOG:  database system is ready to accept connections
+2024-11-17 21:37:35.844 GMT [35] LOG:  duration: 0.636 ms  parse s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) LIMIT $2 OFFSET $3
+2024-11-17 21:37:35.845 GMT [35] LOG:  AUDIT: SESSION,1,1,READ,SELECT,,,"SELECT ""public"".""Vehiculo"".""id"", ""public"".""Vehiculo"".""placa"", ""public"".""Vehiculo"".""modelo"", ""public"".""Vehiculo"".""marca"", ""public"".""Vehiculo"".""color"", ""public"".""Vehiculo"".""tipo"", ""public"".""Vehiculo"".""atributo"", ""public"".""Vehiculo"".""createdAt"", ""public"".""Vehiculo"".""updatedAt"" FROM ""public"".""Vehiculo"" WHERE (""public"".""Vehiculo"".""placa"" = $1 AND 1=1) LIMIT $2 OFFSET $3",<not logged>
+2024-11-17 21:37:35.845 GMT [35] LOG:  duration: 0.593 ms  bind s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) LIMIT $2 OFFSET $3
+2024-11-17 21:37:35.845 GMT [35] DETAIL:  Parameters: $1 = 'Wacala', $2 = '1', $3 = '0'
+2024-11-17 21:37:35.845 GMT [35] LOG:  execute s0: SELECT "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt" FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) LIMIT $2 OFFSET $3
+2024-11-17 21:37:35.845 GMT [35] DETAIL:  Parameters: $1 = 'Wacala', $2 = '1', $3 = '0'
+2024-11-17 21:37:35.845 GMT [35] LOG:  duration: 0.100 ms
+2024-11-17 21:37:35.849 GMT [35] LOG:  duration: 0.093 ms  parse s1: DELETE FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) RETURNING "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt"
+2024-11-17 21:37:35.849 GMT [35] LOG:  duration: 0.104 ms  bind s1: DELETE FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) RETURNING "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt"
+2024-11-17 21:37:35.849 GMT [35] DETAIL:  Parameters: $1 = 'Wacala'
+2024-11-17 21:37:35.849 GMT [35] LOG:  execute s1: DELETE FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) RETURNING "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt"
+2024-11-17 21:37:35.849 GMT [35] DETAIL:  Parameters: $1 = 'Wacala'
+2024-11-17 21:37:35.849 GMT [35] LOG:  AUDIT: SESSION,2,1,WRITE,DELETE,,,"DELETE FROM ""public"".""Vehiculo"" WHERE (""public"".""Vehiculo"".""placa"" = $1 AND 1=1) RETURNING ""public"".""Vehiculo"".""id"", ""public"".""Vehiculo"".""placa"", ""public"".""Vehiculo"".""modelo"", ""public"".""Vehiculo"".""marca"", ""public"".""Vehiculo"".""color"", ""public"".""Vehiculo"".""tipo"", ""public"".""Vehiculo"".""atributo"", ""public"".""Vehiculo"".""createdAt"", ""public"".""Vehiculo"".""updatedAt""",<not logged>
+2024-11-17 21:37:35.851 GMT [35] LOG:  AUDIT: SESSION,2,2,READ,SELECT,,,"SELECT 1 FROM ONLY ""public"".""Carro"" x WHERE $1 OPERATOR(pg_catalog.=) ""vehiculoID"" FOR KEY SHARE OF x",<not logged>
+2024-11-17 21:37:35.852 GMT [35] LOG:  AUDIT: SESSION,2,3,READ,SELECT,,,"SELECT 1 FROM ONLY ""public"".""Moto"" x WHERE $1 OPERATOR(pg_catalog.=) ""vehiculoID"" FOR KEY SHARE OF x",<not logged>
+2024-11-17 21:37:35.852 GMT [35] LOG:  AUDIT: SESSION,2,4,READ,SELECT,,,"SELECT 1 FROM ONLY ""public"".""Ficha"" x WHERE $1 OPERATOR(pg_catalog.=) ""vehiculoId"" FOR KEY SHARE OF x",<not logged>
+2024-11-17 21:37:35.853 GMT [35] ERROR:  update or delete on table "Vehiculo" violates foreign key constraint "Ficha_vehiculoId_fkey" on table "Ficha"
+2024-11-17 21:37:35.853 GMT [35] DETAIL:  Key (id)=(17) is still referenced from table "Ficha".
+2024-11-17 21:37:35.853 GMT [35] STATEMENT:  DELETE FROM "public"."Vehiculo" WHERE ("public"."Vehiculo"."placa" = $1 AND 1=1) RETURNING "public"."Vehiculo"."id", "public"."Vehiculo"."placa", "public"."Vehiculo"."modelo", "public"."Vehiculo"."marca", "public"."Vehiculo"."color", "public"."Vehiculo"."tipo", "public"."Vehiculo"."atributo", "public"."Vehiculo"."createdAt", "public"."Vehiculo"."updatedAt"
+2024-11-17 21:39:11.394 GMT [1] LOG:  received fast shutdown request
+2024-11-17 21:39:11.396 GMT [1] LOG:  aborting any active transactions
+2024-11-17 21:39:11.398 GMT [1] LOG:  background worker "logical replication launcher" (PID 33) exited with exit code 1
+2024-11-17 21:39:11.398 GMT [28] LOG:  shutting down
+2024-11-17 21:39:11.400 GMT [28] LOG:  checkpoint starting: shutdown immediate
+2024-11-17 21:39:11.408 GMT [28] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.002 s, total=0.010 s; sync files=4, longest=0.001 s, average=0.001 s; distance=2 kB, estimate=2 kB; lsn=0/5DA1DB8, redo lsn=0/5DA1DB8
+2024-11-17 21:39:11.412 GMT [1] LOG:  database system is shut down
